@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+              <h1>CRUD IA</h1>
+              <a href="{% url 'crear' %}" class="btn btn-primary">Agregar tema</a>
+              <br>
+              <br>
+              <br>
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Nombre</th>
+                          <th>Opciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for temario in temario_lista %}
+                    <tr>
+                        <td>{{ temario.numero }}</td>
+                        <td>{{ temario.nombre }}</td>
+                        <td>
+                            <a href="{% url 'editar' id=temario.id %}">Editar</a>
+                            <a href="{% url 'borrar' temario.id %}">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+
+              </table>   
+
+             </div>
+        </div>
+    </div>
+
+{% endblock %}
